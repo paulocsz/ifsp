@@ -1,4 +1,3 @@
-from audioop import add
 from time import sleep
 
 
@@ -22,15 +21,15 @@ exame = 0
 tem_proximo = "s"
 
 while tem_proximo == "s":
-    alunos = input("Digite o nome do aluno: ")
+    alunos = input("Digite o nome do aluno:\n> ")
     aluno = alunos.title()
     
-    sexos = input("Escolha o Sexo do Aluno M/F: ")
+    sexos = input("Escolha o Sexo do Aluno M/F:\n> ")
     sexo = sexos.upper()
    
     while sexo != "M" and sexo != "F":
         print("Escolha apenas M para masculino ou F para feminino")
-        sexos = input("Escolha o Sexo do Aluno M/F: ")
+        sexos = input("Escolha o Sexo do Aluno M/F:\n> ")
         sexo = sexos.upper()
 
     if sexo == "M":
@@ -43,23 +42,23 @@ while tem_proximo == "s":
     nota_primeiro = -1
     while type(nota_primeiro) != float or nota_primeiro < 0 or nota_primeiro > 10:
         try:
-            nota_primeiro = float(input("Digite a primeira nota (0/10 com decimais separados por ponto): "))
+            nota_primeiro = float(input("Digite a primeira nota (0/10 com decimais separados por ponto):\n> "))
             
         except:
             print("Digite um numero de 0 a 10")
     
     nota_segundo = -1
-    while type(nota_segundo) != float or nota_primeiro < 0 or nota_primeiro > 10:
+    while type(nota_segundo) != float or nota_segundo < 0 or nota_segundo > 10:
         try:
-            nota_segundo = float(input("Digite a segunda nota (0/10 com decimais separados por ponto): "))
+            nota_segundo = float(input("Digite a segunda nota (0/10 com decimais separados por ponto):\n> "))
             
         except:
             print("Digite um numero de 0 a 10")
     
     nota_terceiro = -1
-    while type(nota_terceiro) != float or nota_primeiro < 0 or nota_primeiro > 10:
+    while type(nota_terceiro) != float or nota_terceiro < 0 or nota_terceiro > 10:
         try:
-            nota_terceiro = float(input("Digite a terceira nota (0/10 com decimais separados por ponto): "))
+            nota_terceiro = float(input("Digite a terceira nota (0/10 com decimais separados por ponto):\n> "))
             
         except:
             print("Digite um numero de 0 a 10")
@@ -93,56 +92,62 @@ while tem_proximo == "s":
         elif sexo == "F":
             mulher_reprovado += 1
             
-    proximo_aluno = input("Ir para proximo aluno? S/N:")
+    proximo_aluno = input("Ir para proximo aluno? S/N:\n> ")
     proximo = proximo_aluno.upper()
     while proximo != "S" and proximo != "N":
         print("Escolha apenas S para sim ou N para nao")
 
-        proximo_aluno = input("Ir para proximo aluno? S/N:")
+        proximo_aluno = input("Ir para proximo aluno? S/N:\n> ")
         proximo = proximo_aluno.upper()
 
     if proximo == "S":
         tem_proximo = "s"
     elif proximo == "N":
         tem_proximo = "n"
-        print("aprovados:", aprovados)
-        print("Percentual de alunos aprovados:", int(aprovados * 100 / total), "%")
-        print("percentual de alunos de exame:", int(exame * 100 / total), "%")
-        print("Percentual de alunos reprovados:", int(reprovados * 100 / total), "%")
+        print("total de alunos cadastrados:", total)
+        print("Percentual de alunos aprovados:", (aprovados * 100 / total), "%")
+        print("percentual de alunos de exame:", (exame * 100 / total), "%")
+        print("Percentual de alunos reprovados:", (reprovados * 100 / total), "%")
         
         print("total de homens aprovados:", homem_aprovado)
         print("total de mulheres aprovadas:", mulher_aprovado)
        
-        print("total de homens de exame:", homem_aprovado)
-        print("total de mulheres de exame:", homem_aprovado)
+        print("total de homens de exame:", homem_exame)
+        print("total de mulheres de exame:", mulher_exame)
        
         print("total de homens reprovados:", homem_reprovado)
         print("total de mulheres reprovados:", mulher_reprovado)
 
         sleep(1.5)
-        encerrar = input("Deseja encerrar o programa? S/N \n ")
+        
+        encerrar = input("Deseja encerrar o programa? S/N:\n> ")
         fechar = encerrar.upper()
         
-        while fechar != "S" or fechar != "N":
+        while fechar != "S" and fechar != "N":
             print("Escolha S para sim ou N para não")
-            encerrar = input("Deseja encerrar o programa? S/N: ")
+            encerrar = input("Deseja encerrar o programa? S/N:\n> ")
             fechar = encerrar.upper()
 
         if fechar == "S":
+            print("o programa será encerrado")
+            sleep(2)
             break
         
         elif fechar == "N":
-            mais_alunos = input("Adicionar mais alunos? S/N: ")
+            mais_alunos = input("Adicionar mais alunos? S/N:\n> ")
             add_aluno = mais_alunos.upper()
             
-            while add_aluno != "N" or add_aluno != "S":
-                mais_alunos = input("Adicionar mais alunos? Digite S para sim ou N para nao S/N")
+            while add_aluno != "N" and add_aluno != "S":
+                mais_alunos = input("Adicionar mais alunos? Digite S para sim ou N para nao S/N:\n> ")
                 add_aluno = mais_alunos.upper()
                 
             if add_aluno == "N":
+                print("o programa será encerrado")
+                sleep(2)
                 break
             elif add_aluno == "S":
-                tem_proximo = "S"
+                print("Adicionando mais alunos")
+                tem_proximo = "s"
 
 
 
